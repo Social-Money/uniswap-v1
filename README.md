@@ -39,3 +39,12 @@ cd ..
 ```
 $ pytest -v tests/
 ```
+### 合约部署
+1. 项目clone，设置好python环境，详情见：https://github.com/Uniswap/contracts-vyper/blob/master/README.md
+2. use vyper uniswap_factory.vy to get bytecode and vyper -f abi uniswap_factory.vy to get the ABI. Do the same for uniswap_exchange.vy
+3. Deploy both contracts separately from their bytecode using https://mycrypto.com/contracts/deploy
+4. Use factory ABI (step 2) + factory address (step 3) and https://mycrypto.com/contracts/interact to open an interface to the uniswap factory
+5. call initializeFactory(templateAddress) and pass in the address of the deployed uniswap_exchange.vy contract (step 2)
+
+- uniswap_factory: `0xc4d477bcf1578ebf4dee2318e19ab7649a83f5bb`
+- uniswap_exchange: `0xb162ea33ad2ebf86033db73fcfc6b5f954c93e08`
